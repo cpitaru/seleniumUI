@@ -22,4 +22,5 @@ public enum UserMenuOptions {
     public String getUserMenuOption() {
         return this.userMenuOption;
     }
+
 }

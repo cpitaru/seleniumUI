@@ -1,6 +1,7 @@
 package uimappers.webdriverutils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -37,6 +38,10 @@ public class WebDriverUtilities {
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedAttributeValue, int timeout) {
         waitProvider(timeout).until(ExpectedConditions.attributeContains(element,attribute,expectedAttributeValue));
+    }
+
+    public void waitUntilPageIsLoaded(int timeout) {
+        waitProvider(timeout).until(webDriver -> ((JavascriptExecutor)webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
 }

@@ -28,23 +28,32 @@ public class BaseForm {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public void setFieldValue(String fieldName, String fieldValue) {
+    public void setEmailFieldValue(String fieldName, String fieldValue) {
         //construct the xpath for email and password fields
         String emailFieldXpath = String.format(FORM_EMAIL_FIELD_XPATH, fieldName);
         driverUtilities.waitForElementToBeClickable(By.xpath(emailFieldXpath),DEFAULT_TIMEOUT);
-        String passwordFieldXpath = String.format(FORM_PASSWORD_FIELD_XPATH, fieldName);
-        driverUtilities.waitForElementToBeClickable(By.xpath(passwordFieldXpath),DEFAULT_TIMEOUT);
+
 
         WebElement formEmailField = formContainer.findElement(By.xpath(emailFieldXpath));
-        WebElement formpasswordField = formContainer.findElement(By.xpath(passwordFieldXpath));
 
         //set value for email and password fields
         formEmailField.clear();
-        formpasswordField.clear();
         formEmailField.sendKeys(fieldValue);
-        formpasswordField.sendKeys(fieldValue);
 
         driverUtilities.waitForElementAttributeToContain(formEmailField,"value",fieldValue,DEFAULT_TIMEOUT);
+    }
+
+    public void setPasswordFieldValue(String fieldName, String fieldValue) {
+        //construct the xpath for email and password fields
+        String passwordFieldXpath = String.format(FORM_PASSWORD_FIELD_XPATH, fieldName);
+        driverUtilities.waitForElementToBeClickable(By.xpath(passwordFieldXpath),DEFAULT_TIMEOUT);
+
+        WebElement formpasswordField = formContainer.findElement(By.xpath(passwordFieldXpath));
+
+        //set value for email and password fields
+        formpasswordField.clear();
+        formpasswordField.sendKeys(fieldValue);
+
         driverUtilities.waitForElementAttributeToContain(formpasswordField,"value",fieldValue,DEFAULT_TIMEOUT);
     }
 
