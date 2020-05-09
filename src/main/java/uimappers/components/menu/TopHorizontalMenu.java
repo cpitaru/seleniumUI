@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import uimappers.pages.LoginPage;
 import uimappers.pages.MyCartPage;
+import uimappers.pages.SumarContPage;
 import uimappers.pages.WishlistPage;
 import uimappers.webdriverutils.WebDriverUtilities;
 
@@ -50,7 +51,8 @@ public class TopHorizontalMenu {
     }
 
     public LoginPage clickOnLoginButton() {
-        driverUtilities.waitForElementToBeVisible(horizontalMenuContainer, DEFAULT_TIMEOUT);
+        driverUtilities.waitForElementToBeVisible(userMenuDropdown, DEFAULT_TIMEOUT);
+        userMenuDropdown.click();
         loginbutton.click();
 
         return new LoginPage();
@@ -76,6 +78,13 @@ public class TopHorizontalMenu {
         wishlistOption.click();
 
         return new WishlistPage();
+    }
+
+    public SumarContPage navigateToSumarContPage() {
+        driverUtilities.waitForElementToBeVisible(horizontalMenuContainer, DEFAULT_TIMEOUT);
+        wishlistOption.click();
+
+        return new SumarContPage();
     }
 
     public void search(String product) {

@@ -2,7 +2,6 @@ package uimappers.pages;
 
 import constants.UserMenuOptions;
 import properties.PropertiesConfig;
-import sun.rmi.runtime.Log;
 import uimappers.components.menu.TopHorizontalMenu;
 import uimappers.components.menu.UserMenu;
 import uimappers.webdriverutils.WebDriverUtilities;
@@ -23,6 +22,8 @@ public class HomePage {
     }
 
     public LoginPage navigateToLoginPage() {
+        topHorizontalMenu.openUserMenu();
+
         return topHorizontalMenu.clickOnLoginButton();
     }
 
