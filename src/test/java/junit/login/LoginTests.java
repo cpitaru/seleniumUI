@@ -9,6 +9,7 @@ import org.junit.Test;
 import properties.PropertiesConfig;
 import uimappers.pages.HomePage;
 import uimappers.pages.LoginPage;
+import uimappers.pages.SumarContPage;
 import uimappers.pages.UserPage;
 
 import static constants.TimeOutConstants.PAGE_LOADING_TIMEOUT;
@@ -32,16 +33,23 @@ public class LoginTests extends BaseTests {
     public void altexLoginInTest() {
         LoginPage loginPage = homePage.navigateToLoginPage();
         loginPage.clickAutentificare("Autentificare");
-        loginPage.setLoginEmailInputField("email",ALTEX_EMAIL);
-        loginPage.setLoginPasswordInputField("password",ALTEX_PASSWORD);
+        loginPage.setLoginEmailInputField("email",emailAddress);
+        loginPage.setLoginPasswordInputField("password",password);
 
         UserPage userPage = loginPage.clickAutentificare("Autentificare");
-        String actualMessage = userPage.userNameMessage("Cosmin");
-        Assert.assertTrue(actualMessage.contains("Cosmin"));
+        SumarContPage sumarContPage = userPage.openUserMenu("Sumar cont");
+
+//        String actualMessage = sumarContPage.getUsernameMessage("Salut Cosmin Test");
+//        Assert.assertTrue(actualMessage.contains("Cosmin Test"));
+
+        String actualMessage2 = sumarContPage.assertionTextFromSumarContPage("Salut Cosmin Test");
+        Assert.assertTrue(actualMessage2.contains("Cosmin Test"));
+
     }
 
     @After
     public void tearDown() {
-        homePage.logout(UserMenuOptions.LOG_OUT);
+//        homePage.logout(UserMenuOptions.LOG_OUT);
+        driver.quit();
     }
 }

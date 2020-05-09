@@ -15,12 +15,19 @@ public class UserPage {
         userMenu = new UserMenu();
     }
 
-    public void openUserMenu(String option) {
+    public SumarContPage openUserMenu(String option) {
         userMenu.clickOnUserMenuOption(option);
+        return new SumarContPage();
     }
 
     public String userNameMessage(String userName) {
         return userMenu.getUsernameMessage(userName);
+    }
+
+
+    public WishlistPage openUserMenuForWishlist(String option) {
+        userMenu.clickOnUserMenuOption(option);
+        return new WishlistPage();
     }
 
 

@@ -11,8 +11,7 @@ import static driverprovider.DriverInstance.getDriver;
 
 public class SearchResultGrid extends BaseGrid {
     private WebDriverUtilities driverUtilities;
-    private static final String PRODUCT_TITLE_XPATH = "//*[@id=\"__next\"]/div[3]/main/div[2]/div[1]/" +
-            "div[2]/ul/li[1]/div/div[2]/div[3]/div[3]/div/div[1]/button[contains(@class,'Wishlist')]";
+    private static final String PRODUCT_TITLE_XPATH = "//*[@id=\"__next\"]/div[3]/main/div[2]/div[1]/div[2]/ul/li[1]/div/div[2]/div[2]/div[3]/div/div[1]/button/div/div";
 
     @FindBy(xpath = "//*[@id=\"__next\"]/div[1]/div/div/div[text()='Produsul a fost adaugat cu succes in wishlist']")
     private WebElement notification;

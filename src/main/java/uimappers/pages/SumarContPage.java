@@ -16,10 +16,10 @@ public class SumarContPage {
     private TopHorizontalMenu topHorizontalMenu;
     private UserMenu userMenu;
 
-    private static final String USERNAME_MESSAGE_XPATH = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/div[2]/div[1]/div/p[1]/strong";
+    private static final String USERNAME_MESSAGE_XPATH = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/div[2]/div[1]/div/p[1]";
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/div[2]/div[1]/div/p[1]/strong")
-    private WebElement assertionTextFromSumarContPage;
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/div[2]/div[1]/div")
+    private WebElement sumContPageContainer;
 
     public SumarContPage() {
         driverUtilities = new WebDriverUtilities();
@@ -28,11 +28,11 @@ public class SumarContPage {
     }
 
     public String getUsernameMessage(String message) {
-        driverUtilities.waitForElementToBeVisible(assertionTextFromSumarContPage, DEFAULT_TIMEOUT);
+        driverUtilities.waitForElementToBeVisible(sumContPageContainer, DEFAULT_TIMEOUT);
 
         //construct the xpath
-        String userNameXpath = String.format(USERNAME_MESSAGE_XPATH,MIN_TIMEOUT);
-        WebElement userMessage = getDriver().findElement(By.xpath(userNameXpath));
+        String userMessageXpath = String.format(USERNAME_MESSAGE_XPATH,message);
+        WebElement userMessage = getDriver().findElement(By.xpath(userMessageXpath));
 
         return userMessage.getText();
     }
@@ -42,6 +42,7 @@ public class SumarContPage {
     }
 
     public String assertionTextFromSumarContPage(String userName) {
+
         return userMenu.getUsernameMessage(userName);
     }
 

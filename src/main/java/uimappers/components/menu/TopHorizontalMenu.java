@@ -94,6 +94,6 @@ public class TopHorizontalMenu {
         searchBar.sendKeys(product);
         driverUtilities.waitForElementAttributeToContain(searchBar,"value",product,MIN_TIMEOUT);
 
-        searchBar.click();
+        searchButton.click();
     }
 }

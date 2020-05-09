@@ -14,7 +14,7 @@ public class WishListContainer extends BaseContainer {
     private WebDriverUtilities driverUtilities;
 
     public static final String PRODUCT_CONTAINER_XPATH = "//*[@id=\"__next\"]//ul[contains(@class, 'Products Products--list')]";
-    private static final String PRODUCT_NAME_XPATH = "//*[@id=\\\"__next\\\"]/div[3]//h2/a[text()='%s']";
+    private static final String PRODUCT_NAME_XPATH = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/ul/li/div/div[3]/h2/a[text()='%s']";
     private static final String REMOVE_FROM_WISHLIST_BUTTON_XPATH = "//*[@id=\\\"__next\\\"]//button/div/div/div[text()='Sterge']";
 
     public WishListContainer() {
