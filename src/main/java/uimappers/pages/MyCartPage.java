@@ -16,4 +16,5 @@ public class MyCartPage {
     public void removeAllProductsFromCart() {
         myCartContainer.removeProductsFromCart();
     }
+
 }

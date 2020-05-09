@@ -16,6 +16,10 @@ public class SearchResultsPage {
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/a")
     private WebElement userDropdown;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[3]/main/div[2]/div[1]/div[2]/ul/li[1]/div/div[2]/div[2]/div[1]/div/div/div/div/button")
+    private WebElement addToCartButton;
+
+
     public SearchResultsPage() {
         topHorizontalMenu = new TopHorizontalMenu();
         searchResultGrid = new SearchResultGrid();
@@ -36,5 +40,15 @@ public class SearchResultsPage {
     }
 
 
+    public void addProductToCart(String product) {
+        searchResultGrid.clickAddToCartButton(product);
+    }
 
+    public void closeModalView() {
+        searchResultGrid.closeModalView();
+    }
+
+    public String assertionTextFromSearchResultPage(String message) {
+        return searchResultGrid.getSearchResultMessage(message);
+    }
 }
