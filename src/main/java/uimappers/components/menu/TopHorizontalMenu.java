@@ -32,6 +32,9 @@ public class TopHorizontalMenu {
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/a")
     private WebElement userMenuDropdown;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div//ul/li[8]/a")
+    private WebElement wishlistOption;
+
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div/form/div[3]/span/button")
     private WebElement loginbutton;
 
@@ -66,6 +69,13 @@ public class TopHorizontalMenu {
         myCart.click();
 
         return new MyCartPage();
+    }
+
+    public WishlistPage navigateToWishlistPage() {
+        driverUtilities.waitForElementToBeVisible(horizontalMenuContainer, DEFAULT_TIMEOUT);
+        wishlistOption.click();
+
+        return new WishlistPage();
     }
 
     public void search(String product) {
