@@ -66,4 +66,9 @@ public class BrowserBasicSteps extends Steps {
         driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
         sharedData.homePage = new HomePage();
     }
+
+    @Given("I open login dropdown")
+    public void givenIOpenLoginDropdown() {
+        sharedData.loginPage = sharedData.homePage.navigateToLoginPage();
+    }
 }

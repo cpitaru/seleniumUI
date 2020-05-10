@@ -22,4 +22,5 @@ public class SharedData {
     public SearchResultsPage searchResultsPage;
     public WishlistPage wishlistPage;
     public MyCartPage myCartPage;
+    public SumarContPage sumarContPage;
 }
