@@ -51,4 +51,10 @@ public class SearchResultsPage {
     public String assertionTextFromSearchResultPage(String message) {
         return searchResultGrid.getSearchResultMessage(message);
     }
+
+
+    public MyCartPage seeMyCartFromModalView() {
+        searchResultGrid.seeMyCartFromModal();
+        return new MyCartPage();
+    }
 }

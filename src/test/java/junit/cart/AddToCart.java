@@ -12,7 +12,7 @@ import static constants.TimeOutConstants.PAGE_LOADING_TIMEOUT;
 import static properties.PropertiesKeys.ALTEX_EMAIL;
 import static properties.PropertiesKeys.ALTEX_PASSWORD;
 
-public class CartTests extends BaseTests {
+public class AddToCart extends BaseTests {
     private HomePage homePage;
     private MyCartPage myCartPage;
     private String emailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
@@ -27,7 +27,7 @@ public class CartTests extends BaseTests {
     }
 
     @Test
-    public void addProductToWishlist() {
+    public void addProductToCart() {
         LoginPage loginPage = homePage.navigateToLoginPage();
         loginPage.clickAutentificare("Autentificare");
         loginPage.setLoginEmailInputField("email", emailAddress);
@@ -43,6 +43,7 @@ public class CartTests extends BaseTests {
         Assert.assertTrue(actualMessage.contains("Rezultate"));
 
     }
+
 
     @After
     public void tearDown() {

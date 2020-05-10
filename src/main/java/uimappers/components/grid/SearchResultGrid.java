@@ -22,8 +22,9 @@ public class SearchResultGrid extends BaseGrid {
     @FindBy(xpath = "/html/body/div[2]/div[2]/i")
     private WebElement closeModalViewButton;
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/div[3]/a")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div[3]/a/div/div/div")
     private WebElement seeCartFromModalView;
+
 
     @FindBy(xpath = "//*[@id=\"__next\"]/div[3]/main/div[2]/div[1]/div[1]/h1")
     private WebElement searchResultsText;
@@ -70,4 +71,10 @@ public class SearchResultGrid extends BaseGrid {
 
         return searchResultMessageElement.getText();
     }
+
+    public void seeMyCartFromModal() {
+        driverUtilities.waitForElementToBeClickable(seeCartFromModalView,DEFAULT_TIMEOUT);
+        seeCartFromModalView.click();
+    }
+
 }
