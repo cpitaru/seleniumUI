@@ -2,6 +2,7 @@ package bdd.setup;
 
 import bdd.utils.SharedData;
 import driverprovider.DriverInstance;
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.steps.Steps;
@@ -25,6 +26,11 @@ public class StoryBasicSteps extends Steps {
         sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
         String password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
         sharedData.loginPage.setLoginEmailInputField("email", password);
+    }
+
+    @AfterScenario
+    public void afterScenario() throws Exception {
+        sharedData.wishlistPage.removeAllProductsFromWishlist();
     }
 
     @AfterStory
