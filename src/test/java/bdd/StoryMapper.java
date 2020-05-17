@@ -32,4 +32,6 @@ public abstract class StoryMapper extends JUnitStories {
     protected List<String> storyPaths() {
         return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()),"**/stories/*.story","");
     }
+
+    protected abstract List<String> storyPath();
 }

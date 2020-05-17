@@ -12,6 +12,7 @@ import static driverprovider.DriverInstance.getDriver;
 public class BaseForm {
     private WebDriverUtilities driverUtilities;
 
+    private static final String INAPOI_LA_SITE_BUTTON_XPATH = "//*[@id=\"page-promo\"]/header/div/div[1]/div/nav/div/div[1]/a";
     private static final String FORM_EMAIL_FIELD_XPATH = "/html/body/div/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div/form/input[1]";
     private static final String FORM_PASSWORD_FIELD_XPATH = "/html/body/div/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div/form/input[2]";
     private static final String FORM_LOGIN_BUTTON_XPATH = "/html/body/div/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div/form/div[3]/span/button";
@@ -22,6 +23,12 @@ public class BaseForm {
 
     @FindBy(xpath = "/html/body/div/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div/form")
     private WebElement formContainer;
+
+    @FindBy(xpath = "//*[@id=\"page-promo\"]/header/div/div[1]")
+    private WebElement promoHeader;
+
+    @FindBy(xpath = "//*[@id=\"page-promo\"]/header/div/div[1]/div/nav/div/div[1]/a")
+    private WebElement inapoiLaSiteLink;
 
     public BaseForm() {
         driverUtilities = new WebDriverUtilities();
@@ -99,6 +106,15 @@ public class BaseForm {
         driverUtilities.waitForElementToBeClickable(formContainer,DEFAULT_TIMEOUT);
         WebElement link = formContainer.findElement(By.xpath(linkXpath));
         link.click();
+    }
+
+    public void clickOnInapoiLaSiteLink(String linkTitle) {
+        String linkXpath = String.format(INAPOI_LA_SITE_BUTTON_XPATH,linkTitle);
+
+        driverUtilities.waitForElementToBeClickable(promoHeader,DEFAULT_TIMEOUT);
+        WebElement link = promoHeader.findElement(By.xpath(linkXpath));
+        link.click();
+        inapoiLaSiteLink.click();
     }
 
 

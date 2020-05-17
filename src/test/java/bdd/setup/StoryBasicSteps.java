@@ -8,11 +8,19 @@ import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.steps.Steps;
 import properties.PropertiesConfig;
 import uimappers.pages.HomePage;
+import uimappers.webdriverutils.WebDriverUtilities;
 
 import static properties.PropertiesKeys.*;
 
 public class StoryBasicSteps extends Steps {
     private SharedData sharedData;
+    private WebDriverUtilities driverUtilities;
+
+    public StoryBasicSteps(SharedData sharedData) {
+        driverUtilities = new WebDriverUtilities();
+        this.sharedData = sharedData;
+        sharedData.driver = DriverInstance.getDriver();
+    }
 
     @BeforeStory
     public void setUp() {

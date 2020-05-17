@@ -5,6 +5,7 @@ import constants.UserMenuOptions;
 import driverprovider.DriverInstance;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.steps.Steps;
+import org.junit.Before;
 import properties.PropertiesConfig;
 import uimappers.pages.HomePage;
 import uimappers.webdriverutils.WebDriverUtilities;
@@ -22,7 +23,7 @@ public class BrowserBasicSteps extends Steps {
         sharedData.driver = DriverInstance.getDriver();
     }
 
-    @BeforeStory
+    @Before
     public void setUp() {
         sharedData.driver = DriverInstance.getDriver();
         sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
@@ -60,15 +61,5 @@ public class BrowserBasicSteps extends Steps {
         sharedData.homePage.logout(UserMenuOptions.LOG_OUT);
     }
 
-    @Given("I open ALTEX home page")
-    public void openAltexPage() {
-        sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
-        driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
-        sharedData.homePage = new HomePage();
-    }
 
-    @Given("I open login dropdown")
-    public void givenIOpenLoginDropdown() {
-        sharedData.loginPage = sharedData.homePage.navigateToLoginPage();
-    }
 }
