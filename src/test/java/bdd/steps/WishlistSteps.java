@@ -46,12 +46,7 @@ public class WishlistSteps extends Steps {
         Assert.assertTrue(message.contains("Wish"));
     }
 
-    @Given("I open ALTEX home page")
-    public void openAltexPage() {
-        sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
-        sharedData.driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
-        sharedData.homePage = new HomePage();
-    }
+
 
     @Given("I open login dropdown")
     public void givenIOpenLoginDropdown() {
@@ -64,17 +59,15 @@ public class WishlistSteps extends Steps {
         sharedData.userPage = sharedData.loginPage.clickAutentificare(autentificare);
     }
 
-    @When("I enter valid $email address")
-    @Given("I enter valid $email address")
-    public void whenIEnterValidEmailAddress(String eMailAddress) {
-        eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
-        sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
+    @When("I enter valid email address")
+    public void whenIEnterValidEmailAddress() {
+        String eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
+        sharedData.loginPage.setLoginEmailInputField(eMailAddress);
     }
 
-    @When("I enter valid $password")
-    @Given("I enter valid $password")
-    public void whenIEnterValidPassword(String password) {
-        password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
+    @When("I enter valid password")
+    public void whenIEnterValidPassword() {
+        String password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
         sharedData.loginPage.setLoginPasswordInputField("password", password);
     }
 

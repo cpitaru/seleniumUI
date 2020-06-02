@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
-public abstract class StoryMapper extends JUnitStories {
+public abstract class StoryMapperCosmin extends JUnitStories {
     protected SharedData sharedData = new SharedData();
 
     @Override
@@ -33,5 +33,4 @@ public abstract class StoryMapper extends JUnitStories {
         return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()),"**/stories/*.story","");
     }
 
-    protected abstract List<String> storyPath();
 }

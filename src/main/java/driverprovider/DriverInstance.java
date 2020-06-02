@@ -44,7 +44,7 @@ public class DriverInstance {
 
 
     private static void getChromeDriverForWindows() {
-        System.setProperty("webdriver.chrome.driver","D:/pageObject_seleniumUI/seleniumUI/src/main/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:/pageObject_seleniumUI/seleniumUI/src/main/resources/drivers/chromedriver2.exe");
     }
 
     public static void quitDriver() {

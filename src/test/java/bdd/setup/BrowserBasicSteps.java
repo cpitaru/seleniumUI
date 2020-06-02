@@ -5,7 +5,6 @@ import constants.UserMenuOptions;
 import driverprovider.DriverInstance;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.steps.Steps;
-import org.junit.Before;
 import properties.PropertiesConfig;
 import uimappers.pages.HomePage;
 import uimappers.webdriverutils.WebDriverUtilities;
@@ -23,18 +22,11 @@ public class BrowserBasicSteps extends Steps {
         sharedData.driver = DriverInstance.getDriver();
     }
 
-    @Before
-    public void setUp() {
-        sharedData.driver = DriverInstance.getDriver();
+    @Given("I open ALTEX home page")
+    public void openAltexPage() {
         sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
+        driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
         sharedData.homePage = new HomePage();
-
-        sharedData.loginPage = sharedData.homePage.navigateToLoginPage();
-        //set email and password
-        String eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
-        sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
-        String password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
-        sharedData.loginPage.setLoginEmailInputField("email", password);
     }
 
     @AfterStory
@@ -48,18 +40,12 @@ public class BrowserBasicSteps extends Steps {
         sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
         sharedData.homePage = new HomePage();
 
-        sharedData.loginPage = sharedData.homePage.navigateToLoginPage();
-        //set email and password
-        String eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
-        sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
-        String password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
-        sharedData.loginPage.setLoginEmailInputField("email", password);
     }
 
-    @AfterScenario
-    public void afterScenario() {
-        sharedData.homePage.logout(UserMenuOptions.LOG_OUT);
-    }
+//    @AfterScenario
+//    public void afterScenario() {
+//        sharedData.homePage.logout(UserMenuOptions.LOG_OUT);
+//    }
 
 
 }

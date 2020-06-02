@@ -30,7 +30,7 @@ public class EmptyCart extends BaseTests {
     public void emptyCart() {
         LoginPage loginPage = homePage.navigateToLoginPage();
         loginPage.clickAutentificare("Autentificare");
-        loginPage.setLoginEmailInputField("email", emailAddress);
+        loginPage.setLoginEmailInputField(emailAddress);
         loginPage.setLoginPasswordInputField("password", password);
 
         UserPage userPage = loginPage.clickAutentificare("Autentificare");

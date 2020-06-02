@@ -33,6 +33,9 @@ public class UserMenu {
     @FindBy(xpath = "//*[@id=\"__next\"]/div[3]/main/div/div[1]/h1")
     private WebElement wishListMessageContainer;
 
+    @FindBy(xpath = "//div[contains(@class,'absolute icon')]")
+    private WebElement userMenuIcon;
+
     public UserMenu() {
         driverUtilities = new WebDriverUtilities();
         PageFactory.initElements(getDriver(),this);
@@ -75,5 +78,10 @@ public class UserMenu {
         WebElement wishlistMessageElement = getDriver().findElement(By.xpath(wishlistMessageXpath));
 
         return wishlistMessageElement.getText();
+    }
+
+    public void openMenu() {
+        driverUtilities.waitForElementToBeClickable(userMenuIcon,DEFAULT_TIMEOUT);
+        userMenuIcon.click();
     }
 }

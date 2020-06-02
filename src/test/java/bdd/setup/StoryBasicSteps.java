@@ -5,11 +5,13 @@ import driverprovider.DriverInstance;
 import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.BeforeStory;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.steps.Steps;
 import properties.PropertiesConfig;
 import uimappers.pages.HomePage;
 import uimappers.webdriverutils.WebDriverUtilities;
 
+import static constants.TimeOutConstants.PAGE_LOADING_TIMEOUT;
 import static properties.PropertiesKeys.*;
 
 public class StoryBasicSteps extends Steps {
@@ -28,18 +30,19 @@ public class StoryBasicSteps extends Steps {
         sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
         sharedData.homePage = new HomePage();
 
-        sharedData.loginPage = sharedData.homePage.navigateToLoginPage();
-        //set email and password
-        String eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
-        sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
-        String password = PropertiesConfig.getProperty(ALTEX_PASSWORD);
-        sharedData.loginPage.setLoginEmailInputField("email", password);
     }
 
-    @AfterScenario
-    public void afterScenario() throws Exception {
-        sharedData.wishlistPage.removeAllProductsFromWishlist();
-    }
+//    @AfterScenario
+//    public void afterScenario() throws Exception {
+//        sharedData.wishlistPage.removeAllProductsFromWishlist();
+//    }
+
+//    @Given("I open ALTEX home page")
+//    public void openAltexPage() {
+//        sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
+//        sharedData.driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
+//        sharedData.homePage = new HomePage();
+//    }
 
     @AfterStory
     public void tearDown() {

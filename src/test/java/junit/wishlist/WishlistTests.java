@@ -31,7 +31,7 @@ public class WishlistTests extends BaseTests {
     public void addProductToWishlist() {
         LoginPage loginPage = homePage.navigateToLoginPage();
         loginPage.clickAutentificare("Autentificare");
-        loginPage.setLoginEmailInputField("email",emailAddress);
+        loginPage.setLoginEmailInputField(emailAddress);
         loginPage.setLoginPasswordInputField("password",password);
 
         UserPage userPage = loginPage.clickAutentificare("Autentificare");
@@ -45,6 +45,7 @@ public class WishlistTests extends BaseTests {
 
         */
 
+//        wishlistPage = userPage.openUserMenu();
         wishlistPage = userPage.openUserMenuForWishlist("Wishlist");
         String actualMessage2 = wishlistPage.assertionTextFromWishlistPage("Wishlist");
         Assert.assertTrue(actualMessage2.contains("Wish"));

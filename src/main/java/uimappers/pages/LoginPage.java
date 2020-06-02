@@ -13,8 +13,8 @@ public class LoginPage {
         driverUtilities = new WebDriverUtilities();
     }
 
-    public void setLoginEmailInputField(String emailFieldName, String emailFieldValue) {
-        loginForm.setEmailFieldValue(emailFieldName,emailFieldValue);
+    public void setLoginEmailInputField(String emailFieldValue) {
+        loginForm.setEmailFieldValue(emailFieldValue);
     }
 
     public void setLoginPasswordInputField(String passwordFieldName, String passwordFieldValue) {
@@ -28,7 +28,7 @@ public class LoginPage {
     }
 
     public UserPage loginWithValidCredentials(String emailAddress, String password) {
-        setLoginEmailInputField("email", emailAddress);
+        setLoginEmailInputField(emailAddress);
         setLoginPasswordInputField("password", password);
 
         return clickAutentificare("Autentificare");

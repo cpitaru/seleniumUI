@@ -24,7 +24,7 @@ public class LoginSteps extends Steps {
     @Given("I enter valid $email address")
     public void whenIEnterValidEmailAddress(String eMailAddress) {
         eMailAddress = PropertiesConfig.getProperty(ALTEX_EMAIL);
-        sharedData.loginPage.setLoginEmailInputField("email", eMailAddress);
+        sharedData.loginPage.setLoginEmailInputField(eMailAddress);
     }
 
     @When("I enter valid $password")
@@ -40,7 +40,7 @@ public class LoginSteps extends Steps {
         sharedData.sumarContPage = sharedData.userPage.openUserMenu(option);
     }
 
-    @Then("I verify that Cosmin Test is displayed")
+    @Then("I verify that $CosminTest is displayed")
     public void thenIVerifyThatCosminTestIsDisplayed(String message) {
         String actualMessage = sharedData.userPage.userNameMessage(message);
         Assert.assertTrue(actualMessage.contains(message));
@@ -52,12 +52,7 @@ public class LoginSteps extends Steps {
         sharedData.userPage = sharedData.loginPage.clickAutentificare(autentificare);
     }
 
-    @Given("I open ALTEX home page")
-    public void openAltexPage() {
-        sharedData.driver.get(PropertiesConfig.getProperty(HOME_URL));
-        sharedData.driverUtilities.waitUntilPageIsLoaded(PAGE_LOADING_TIMEOUT);
-        sharedData.homePage = new HomePage();
-    }
+
 
     @Given("I open login dropdown")
     public void givenIOpenLoginDropdown() {

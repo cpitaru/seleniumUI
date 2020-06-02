@@ -1,6 +1,6 @@
 package bdd.tests;
 
-import bdd.StoryMapper;
+import bdd.StoryMapperCosmin;
 import bdd.setup.BrowserBasicSteps;
 import bdd.steps.LoginSteps;
 import org.jbehave.core.io.StoryFinder;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
-public class Login extends StoryMapper {
+public class Login extends StoryMapperCosmin {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
@@ -19,7 +19,7 @@ public class Login extends StoryMapper {
     }
 
     @Override
-    protected List<String> storyPath() {
+    protected List<String> storyPaths() {
         return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()),"**/stories/Login.story", "");
     }
 }

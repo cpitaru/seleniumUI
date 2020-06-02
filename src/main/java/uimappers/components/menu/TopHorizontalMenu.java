@@ -30,7 +30,7 @@ public class TopHorizontalMenu {
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[4]/form/div/div[2]/button")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/a")
+    @FindBy(xpath = "//div[contains(@class,'absolute icon')]")
     private WebElement userMenuDropdown;
 
     @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/div[1]/div/div/div/div[3]/div[1]/div/div[2]/div//ul/li[8]/a")
@@ -61,7 +61,7 @@ public class TopHorizontalMenu {
     public UserMenu openUserMenu() {
         driverUtilities.waitForElementToBeClickable(userMenuDropdown,MIN_TIMEOUT);
         Actions action = new Actions(getDriver());
-        action.moveToElement(userMenuDropdown).click();
+        action.moveToElement(userMenuDropdown).click().perform();
 
         return new UserMenu();
     }

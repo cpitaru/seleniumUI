@@ -26,6 +26,7 @@ public class UserPage {
 
 
     public WishlistPage openUserMenuForWishlist(String option) {
+        userMenu.openMenu();
         userMenu.clickOnUserMenuOption(option);
         return new WishlistPage();
     }
